@@ -6,4 +6,7 @@
 
     <color name="colorBlue">#579ff7</color>
     <color name="colorBlueGrey">#86bae7</color>
+
+    <!-- 列表分割线 -->
+    <color name="cut_line">#e2e2e2</color>
 </resources>
