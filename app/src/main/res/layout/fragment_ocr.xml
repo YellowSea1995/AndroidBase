@@ -1,0 +1,24 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.huanghai91632.androidbase.ui.fragment.OcrFragment">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/takePhotoBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="获取身份证号码"/>
+
+        <TextView
+            android:id="@+id/idCarNum"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="显示身份证号码" />
+    </LinearLayout>
+</FrameLayout>

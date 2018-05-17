@@ -20,6 +20,7 @@ import com.example.huanghai91632.androidbase.adapter.FragmentViewPagerAdapter;
 import com.example.huanghai91632.androidbase.ui.fragment.AlertDialogFragment;
 import com.example.huanghai91632.androidbase.ui.fragment.HomeFragment;
 import com.example.huanghai91632.androidbase.ui.fragment.ListViewFragment;
+import com.example.huanghai91632.androidbase.ui.fragment.OcrFragment;
 import com.example.huanghai91632.androidbase.ui.fragment.OwnerFragment;
 import com.example.huanghai91632.androidbase.ui.fragment.ShoppingCarFragment;
 import com.example.huanghai91632.androidbase.ui.fragment.VisibilityFragment;
@@ -74,12 +75,14 @@ public class HomeActivity extends FragmentActivity {
         OwnerFragment ownerFragment = new OwnerFragment();
         ListViewFragment listViewFragment = new ListViewFragment();
         AlertDialogFragment alertDialogFragment = new AlertDialogFragment();
+        OcrFragment ocrFragment = new OcrFragment();
 
 //        fragments.add(homeFragment);
         fragments.add(listViewFragment);
 //        fragments.add(visibilityFragment);
         fragments.add(alertDialogFragment);
-        fragments.add(shoppingCarFragment);
+//        fragments.add(shoppingCarFragment);
+        fragments.add(ocrFragment);
         fragments.add(ownerFragment);
 
         titles = new ArrayList<>();

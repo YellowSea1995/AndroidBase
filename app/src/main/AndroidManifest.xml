@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.huanghai91632.androidbase">
 
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/netbug"
@@ -50,6 +53,16 @@
         <activity android:name=".ui.activity.ForgivePasswordActivity" />
         <activity android:name=".ui.activity.RegisterActivity" />
         <activity android:name=".ui.activity.ListViewDetailActivity"></activity>
+
+        //ocr
+        <activity android:name=".ui.widget.ocr.ID_CameraActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="landscape"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"/>
+        <activity android:name=".ui.widget.ocr.Plate_CameraActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="landscape"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"/>
     </application>
 
 </manifest>
