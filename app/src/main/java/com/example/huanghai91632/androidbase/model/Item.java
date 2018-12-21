@@ -9,12 +9,14 @@ public class Item {
     public int itemImageResId;
     public String itemTitle;
     public String itemContent;
+    public String itemPhone;
     public Boolean itemChecked;
 
-    public Item(int itemImageResId, String itemTitle, String itemContent, boolean itemChecked) {
+    public Item(int itemImageResId, String itemTitle, String itemContent, String itemPhone, boolean itemChecked) {
         this.itemImageResId = itemImageResId;
         this.itemTitle = itemTitle;
         this.itemContent = itemContent;
+        this.itemPhone = itemPhone;
         this.itemChecked = itemChecked;
     }
 

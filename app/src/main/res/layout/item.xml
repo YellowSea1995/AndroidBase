@@ -37,6 +37,14 @@
             android:gravity="center"
             android:textSize="20sp"
             android:layout_toRightOf="@+id/iv_image" />
+
+        <TextView
+            android:id="@+id/tv_phone"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:text="Phone"
+            android:gravity="center"
+            android:textSize="20sp" />
     </LinearLayout>
 
     <CheckBox

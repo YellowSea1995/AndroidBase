@@ -50,6 +50,7 @@ public class ListViewFragment extends Fragment {
                     R.mipmap.ic_launcher,
                     "我是标题" + i,
                     "我是内容" + i,
+                    "18814126232",
                     false
             ));
         }

@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.example.huanghai91632.androidbase.R;
 import com.example.huanghai91632.androidbase.model.Item;
+import com.example.huanghai91632.androidbase.util.Tools;
 
 import java.util.List;
 
@@ -25,8 +26,10 @@ public class ListViewBaseAdapter extends BaseAdapter {
     
     private List<Item> mList;
     private LayoutInflater mInflater;
+    private Context context;
 
     public ListViewBaseAdapter(Context context, List<Item> list) {
+        this.context = context;
         mList = list;
         mInflater = LayoutInflater.from(context);
     }
@@ -55,6 +58,7 @@ public class ListViewBaseAdapter extends BaseAdapter {
             viewHolder.imageView = view.findViewById(R.id.iv_image);
             viewHolder.title = view.findViewById(R.id.tv_title);
             viewHolder.content = view.findViewById(R.id.tv_content);
+            viewHolder.phone = view.findViewById(R.id.tv_phone);
             viewHolder.checked = view.findViewById(R.id.checked);
             view.setTag(viewHolder);
         } else {
@@ -64,6 +68,13 @@ public class ListViewBaseAdapter extends BaseAdapter {
         viewHolder.imageView.setImageResource(item.itemImageResId);
         viewHolder.title.setText(item.itemTitle);
         viewHolder.content.setText(item.itemContent);
+        viewHolder.phone.setText(item.itemPhone);
+        viewHolder.phone.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Tools.getTools().callPhoneByUser(context, viewHolder.phone.getText().toString());
+            }
+        });
         viewHolder.checked.setChecked(mList.get(i).getItemChecked());
         viewHolder.checked.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,8 +84,6 @@ public class ListViewBaseAdapter extends BaseAdapter {
                 } else {
                     mList.get(i).setItemChecked(false);
                 }
-
-                Log.d(TAG, "onClick: " + "cccc");
             }
         });
         return view;
@@ -84,6 +93,7 @@ public class ListViewBaseAdapter extends BaseAdapter {
         public ImageView imageView;
         public TextView title;
         public TextView content;
+        public TextView phone;
         public CheckBox checked;
     }
 }
