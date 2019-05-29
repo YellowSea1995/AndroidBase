@@ -11,13 +11,13 @@ import java.util.List;
  */
 public class FragmentViewPagerAdapter extends android.support.v4.app.FragmentPagerAdapter {
 
-    private List<Fragment> fragments;
     private List<String> titles;
+    private List<Fragment> fragments;
 
     public FragmentViewPagerAdapter(FragmentManager fm, List<Fragment> fragments, List<String> titles) {
         super(fm);
-        this.fragments = fragments;
         this.titles = titles;
+        this.fragments = fragments;
     }
 
     @Override

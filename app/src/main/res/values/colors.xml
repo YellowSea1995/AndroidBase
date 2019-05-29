@@ -7,6 +7,17 @@
     <color name="colorBlue">#579ff7</color>
     <color name="colorBlueGrey">#86bae7</color>
 
+    <color name="white">#ffffff</color>
+    <color name="black">#000000</color>
+
+    <!-- 主页 -->
+    <color name="menu_gray">#8a8a8a</color>
+    <color name="menu_green">#45c01a</color>
+
+    <!-- 微信 -->
+    <color name="wx_head_selected">#45c01a</color>
+    <color name="wx_head_default">#5b666f</color>
+
     <!-- 列表分割线 -->
     <color name="cut_line">#e2e2e2</color>
 </resources>

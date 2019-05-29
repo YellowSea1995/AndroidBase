@@ -34,13 +34,13 @@ import java.util.List;
  */
 public class HomeActivity extends FragmentActivity {
 
-    public TabLayout tabLayout;
-    public List<String> titles;
-    public List<Fragment> fragments;
-    public FragmentManager fm;
+    private TabLayout tabLayout;
+    private List<String> titles;
+    private List<Fragment> fragments;
+    private FragmentViewPagerAdapter adapter;
 
-    public ViewPager viewPager;
-    public int[] tabIcons = {
+    private ViewPager viewPager;
+    private int[] tabIcons = {
             R.drawable.tab_home,
             R.drawable.tab_visibility,
             R.drawable.tab_shoppingcar,
@@ -79,14 +79,14 @@ public class HomeActivity extends FragmentActivity {
         OcrFragment ocrFragment = new OcrFragment();
         HandlerFragment handlerFragment = new HandlerFragment();
 
-//        fragments.add(homeFragment);
+        fragments.add(homeFragment);
         fragments.add(listViewFragment);
 //        fragments.add(visibilityFragment);
         fragments.add(alertDialogFragment);
 //        fragments.add(shoppingCarFragment);
         fragments.add(ocrFragment);
 //        fragments.add(ownerFragment);
-        fragments.add(handlerFragment);
+//        fragments.add(handlerFragment);
 
         titles = new ArrayList<>();
         titles.add("首页");
@@ -94,14 +94,14 @@ public class HomeActivity extends FragmentActivity {
         titles.add("购物车");
         titles.add("我");
 
-        FragmentViewPagerAdapter adapter = new FragmentViewPagerAdapter(getSupportFragmentManager(), fragments, titles);
+        adapter = new FragmentViewPagerAdapter(getSupportFragmentManager(), fragments, titles);
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
-        setupTabIcons();
+        setUpTabIcons();
         viewPager.setCurrentItem(0);
     }
 
-    public void setupTabIcons() {
+    public void setUpTabIcons() {
         tabLayout.getTabAt(0).setCustomView(getTabView(0));
         tabLayout.getTabAt(1).setCustomView(getTabView(1));
         tabLayout.getTabAt(2).setCustomView(getTabView(2));

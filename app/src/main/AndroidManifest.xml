@@ -43,14 +43,11 @@
             <!--</intent-filter>-->
         </activity>
         <activity android:name=".ui.activity.HomeActivity">
-
-            <!--
            <intent-filter>
                <action android:name="android.intent.action.MAIN" />
 
                <category android:name="android.intent.category.LAUNCHER" />
            </intent-filter>
-            -->
         </activity>
         <activity android:name=".ui.activity.PhoneActivity" />
         <activity android:name=".ui.activity.ForgivePasswordActivity" />
@@ -68,11 +65,11 @@
             android:screenOrientation="landscape"
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
         <activity android:name="com.ncspt.modular.main.view.activity.MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            <!--<intent-filter>-->
+                <!--<action android:name="android.intent.action.MAIN" />-->
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+                <!--<category android:name="android.intent.category.LAUNCHER" />-->
+            <!--</intent-filter>-->
         </activity>
         <activity android:name="com.ncspt.modular.main.view.activity.TestTitleViewDetailActivity" />
     </application>
