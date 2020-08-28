@@ -22,7 +22,7 @@ import java.util.List;
 public class ListViewBaseAdapter extends BaseAdapter {
 
     private static final String TAG = "ListViewBaseAdapter";
-    
+
     private List<Item> mList;
     private LayoutInflater mInflater;
     private Context context;
@@ -62,8 +62,8 @@ public class ListViewBaseAdapter extends BaseAdapter {
             view.setTag(viewHolder);
         } else {
             viewHolder = (ViewHolder) view.getTag();
-    }
-    Item item = mList.get(i);
+        }
+        Item item = mList.get(i);
         viewHolder.imageView.setImageResource(item.itemImageResId);
         viewHolder.title.setText(item.itemTitle);
         viewHolder.content.setText(item.itemContent);
