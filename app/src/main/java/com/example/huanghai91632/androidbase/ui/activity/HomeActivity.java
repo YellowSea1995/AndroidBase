@@ -1,12 +1,20 @@
 package com.example.huanghai91632.androidbase.ui.activity;
 
+import android.Manifest;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.location.LocationManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.provider.Settings;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -25,6 +33,7 @@ import com.example.huanghai91632.androidbase.ui.fragment.OcrFragment;
 import com.example.huanghai91632.androidbase.ui.fragment.OwnerFragment;
 import com.example.huanghai91632.androidbase.ui.fragment.ShoppingCarFragment;
 import com.example.huanghai91632.androidbase.ui.fragment.VisibilityFragment;
+import com.example.huanghai91632.androidbase.utils.Tools;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -57,12 +66,41 @@ public class HomeActivity extends FragmentActivity {
         }
     };
 
+    final String[] GPS_PERMISSIONS = new String[]{Manifest.permission.ACCESS_COARSE_LOCATION,
+            Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.READ_PHONE_STATE};
+
+    private static final int BAIDU_READ_PHONE_STATE = 100;//定位权限请求
+    private static final int PRIVATE_CODE = 1315;//开启GPS权限
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
         initFragment();
+
+//        Tools.getTools().getGrantByUser(this, GPS_PERMISSIONS);
+
+        getGps();
+    }
+
+
+    private void getGps() {
+        LocationManager locationManager = (LocationManager) this.getSystemService(this.LOCATION_SERVICE);
+        boolean isOpenGps = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
+        if (isOpenGps) {//开了定位服务
+            if (Build.VERSION.SDK_INT >= 23) { //判断是否为android6.0系统版本，如果是，需要动态添加权限
+                if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
+                        != PackageManager.PERMISSION_GRANTED) {// 没有权限，申请权限。
+                    ActivityCompat.requestPermissions(this, GPS_PERMISSIONS, BAIDU_READ_PHONE_STATE);
+                }
+            }
+        } else {
+            Toast.makeText(this, "系统检测到未开启GPS定位服务,请开启", Toast.LENGTH_LONG).show();
+            Intent intent = new Intent();
+            intent.setAction(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+            startActivityForResult(intent, PRIVATE_CODE);
+        }
     }
 
     private void initFragment() {

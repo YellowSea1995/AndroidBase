@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
@@ -38,7 +39,7 @@ public class Tools extends Activity {
         intent.setData(data);
         if (ActivityCompat.checkSelfPermission(context, Manifest.permission.CALL_PHONE)
                 != PackageManager.PERMISSION_GRANTED) {
-            //申请WRITE_EXTERNAL_STORAGE权限
+            //申请CALL_PHONE权限
             ActivityCompat.requestPermissions((Activity) context,
                     new String[]{Manifest.permission.CALL_PHONE}, 1);
         }
@@ -51,11 +52,26 @@ public class Tools extends Activity {
         intent.setData(data);
         if (ActivityCompat.checkSelfPermission(context, Manifest.permission.CALL_PHONE)
                 != PackageManager.PERMISSION_GRANTED) {
-            //申请WRITE_EXTERNAL_STORAGE权限
+            //申请CALL_PHONE权限
             ActivityCompat.requestPermissions((Activity) context,
                     new String[]{Manifest.permission.CALL_PHONE}, 1);
         }
         context.startActivity(intent);
+    }
+
+    /**
+     * 获取权限
+     * @param context
+     * @param grants
+     */
+    public void getGrantByUser(Context context, String[] grants) {
+        if (Build.VERSION.SDK_INT >= 23) { //判断是否为6.0+系统版本，需要动态添加权限
+            if (ActivityCompat.checkSelfPermission(context, grants[0])
+                    != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions((Activity) context,
+                        grants, 1);
+            }
+        }
     }
 
     public static void toast(Context ctx, String msg) {
